@@ -14,11 +14,15 @@ export default function App() {
   ];
   // why did it stop working when I introduced do / while code? Why did newIcon go pale as if not referenced?
   const changeIcon = () => {
-    do {
-      const newIcon = 
+    let found = false;
+    while (found == false) {
+      let newIcon =
         possibleIcons[Math.floor(Math.random() * possibleIcons.length)];
-    } while (icon == newIcon);
-    setIcon(newIcon); 
+      if (icon != newIcon) {
+        setIcon(newIcon);
+        found = true;
+      }
+    }
   };
 
   return (
