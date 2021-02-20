@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AddTask from './src/components/AddTask';
 import {
   StyleSheet,
   Text,
@@ -23,11 +24,22 @@ export default function App() {
     todosNew[objIndex]['done'] = !todosNew[objIndex]['done'];
     setTodos(todosNew);
   };
+  const addTask = (text) => {
+    setTodos((prevTodos) => {
+      return [{
+        key: Math.random().toString(),
+        task: text,
+        done: false
+      }, ...prevTodos]
+    });
+  }
+  
   
   
   return (
     <View style={styles.container}>
       <Header />
+      <AddTask addTask={addTask} />
       <View style={styles.list}>
         <FlatList data={todos} renderItem={({ item }) => <TodoTask item={item} toggleDone={toggleDone} />} />
       </View>
