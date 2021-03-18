@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+  FlatList,
+  Image,
+} from "react-native";
 import { global } from "../config/global";
 
 export default function PhotosScreen({ navigation }) {
   const [searchQuery, setSearchQuery] = useState("Beach");
-  const [photos, setPhotos] = useState();  // //////////////////////////Is this positioned correctly???????? penultimate step from activity 20
+  const [photos, setPhotos] = useState();
 
   const searchPhotos = () => {
     console.log(
@@ -19,7 +26,7 @@ export default function PhotosScreen({ navigation }) {
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
-        setPhotos(json["results"]);   // //////////////////////////Is this positioned correctly???????? last step activity 20
+        setPhotos(json["results"]);
       })
       .catch((error) => {
         console.error(error);
@@ -32,7 +39,23 @@ export default function PhotosScreen({ navigation }) {
 
   return (
     <View style={styles.PhotosScreen}>
-      <Text>Photos screen</Text>
+      {photos ? (
+        <View style={styles.resultsContainer}>
+          <FlatList numColumns="2" style={{margin:10}}
+            data={photos}
+            renderItem={({ item }) => (
+              <Image
+                style={styles.resultImage}
+                source={{ uri: item.urls.regular }}
+              />
+            )}
+          />
+        </View>
+      ) : (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color="#000" />
+        </View>
+      )}
     </View>
   );
 }
@@ -41,4 +64,14 @@ const styles = StyleSheet.create({
   PhotosScreen: {
     /* styles here */
   },
+  loadingContainer: {
+    height: "100%",
+    justifyContent: "center",
+  },
+  resultImage: {
+    flex: 1,
+    margin: 10,
+    height: 200
+  },
+
 });

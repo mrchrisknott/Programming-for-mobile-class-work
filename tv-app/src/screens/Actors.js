@@ -5,11 +5,12 @@ import {
   View,
   ActivityIndicator,
   FlatList,
+  Image,
 } from "react-native";
 
 export default function ActorsScreen({ navigation }) {
-  const [searchQuery, setSearchQuery] = useState("Smith"); // step 5??????  numbering error in activity   ??????????????????????????
-  const [actors, setActors] = useState(); // activity numbering errors - is this in correct place?   ??????????????????????????????
+  const [searchQuery, setSearchQuery] = useState("Smith");
+  const [actors, setActors] = useState();
 
   const searchActors = () => {
     console.log(
@@ -19,7 +20,7 @@ export default function ActorsScreen({ navigation }) {
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
-        setActors(json["results"]); // is this correct positioning?????????????????????
+        setActors(json["results"]);
       })
       .catch((error) => {
         console.error(error);
@@ -52,7 +53,6 @@ const styles = StyleSheet.create({
     /* styles here */
   },
   loadingContainer: {
-    /* styles here */
     height: "100%",
     justifyContent: "center",
   },
