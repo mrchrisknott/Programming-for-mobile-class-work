@@ -7,10 +7,12 @@ import {
   FlatList,
   Image,
 } from "react-native";
+import { global } from "../config/global";
 
 export default function ActorsScreen({ navigation }) {
   const [searchQuery, setSearchQuery] = useState("Smith");
   const [actors, setActors] = useState();
+  
 
   const searchActors = () => {
     console.log(
@@ -19,8 +21,15 @@ export default function ActorsScreen({ navigation }) {
     fetch("http://api.tvmaze.com/search/people?q=" + searchQuery)
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
-        setActors(json["results"]);
+
+        console.log(json);              
+        setActors(json["results"]);     // results is UNDEFINED !!!!!!
+        console.log("CJK-START");       
+        console.log(json["results"]);   
+        console.log("CJK-ENDSTART");    
+
+
+
       })
       .catch((error) => {
         console.error(error);

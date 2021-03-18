@@ -4,9 +4,9 @@ import { StyleSheet, Text, View } from "react-native";
 // import ActorDetailsScreen from "./src/screens/ActorDetails";
 // import ProgDetailsScreen from "./src/screens/ProgDetails";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeNavigator from "./src/navigators/Home";
+
 import ProgsNavigator from "./src/navigators/Progs";
 import ActorsNavigator from "./src/navigators/Actors";
 

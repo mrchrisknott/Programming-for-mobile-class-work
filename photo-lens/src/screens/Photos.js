@@ -17,16 +17,18 @@ export default function PhotosScreen({ navigation }) {
     console.log(
       "Make a call to the API using the search query: " + searchQuery
     );
-    fetch(
-      "https://api.unsplash.com/search/photos?client_id=" +
+    fetch("https://api.unsplash.com/search/photos?client_id=" +
         global.unsplashAccessKey +
         "&query=" +
         searchQuery
     )
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
+        console.log(json);              // displays
         setPhotos(json["results"]);
+        console.log("CJK-START");       // displays
+        console.log(json["results"]);   // displays
+        console.log("CJK-ENDSTART");    // displays
       })
       .catch((error) => {
         console.error(error);
@@ -41,7 +43,9 @@ export default function PhotosScreen({ navigation }) {
     <View style={styles.PhotosScreen}>
       {photos ? (
         <View style={styles.resultsContainer}>
-          <FlatList numColumns="2" style={{margin:10}}
+          <FlatList
+            numColumns="2"
+            style={{ margin: 10 }}
             data={photos}
             renderItem={({ item }) => (
               <Image
@@ -71,7 +75,6 @@ const styles = StyleSheet.create({
   resultImage: {
     flex: 1,
     margin: 10,
-    height: 200
+    height: 200,
   },
-
 });
