@@ -23,7 +23,7 @@ export default function ActorsScreen({ navigation }) {
       .then((json) => {
 
         console.log(json);              
-        setActors(json["results"]);     // results is UNDEFINED !!!!!!
+        setActors(json["results"]);     // this does not work - because results at line 28 is UNDEFINED !!!!!!
         console.log("CJK-START");       
         console.log(json["results"]);   
         console.log("CJK-ENDSTART");    
