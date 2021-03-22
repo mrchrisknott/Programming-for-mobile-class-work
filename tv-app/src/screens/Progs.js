@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, ActivityIndicator, FlatList } from "react-native";
+import React, { useState, useEffect } from "react";  
+import {
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+  FlatList,
+  Image,
+} from "react-native";                               
 
 export default function ProgsScreen({ navigation }) {
-  const [searchQuery, setSearchQuery] = useState("News");
-  const [progs, setProgs] = useState(); // //////////////////////////Is this positioned correctly???????? penultimate step from activity 20 ??????????
-
+  const [searchQuery, setSearchQuery] = useState("candid");
+  const [progs, setProgs] = useState();
   const searchProgs = () => {
     console.log(
       "Make a call to the API using the search query: " + searchQuery
@@ -13,7 +19,7 @@ export default function ProgsScreen({ navigation }) {
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
-        setProgs(json["results"]); // //////////////////////////Is this positioned correctly???????? last step activity 20  ?????????????????????
+        setProgs(json);
       })
       .catch((error) => {
         console.error(error);
@@ -24,13 +30,40 @@ export default function ProgsScreen({ navigation }) {
     searchProgs();
   }, [searchQuery]);
 
+  const checkImagePresent = (item) => {
+    if (item.show.image) {
+      return (
+        <Image
+          source={{ uri: item.show.image.original }}
+          style={styles.resultImage}
+        />
+      );
+    } else {
+      return (
+        <Image
+          source={{ uri: "https://d3iso9mq9tb10q.cloudfront.net/wysiwyg/default-placeholder.png" }}
+          style={styles.resultImage}
+        />
+      );
+    }
+  };
+
   return (
     <View style={styles.ProgsScreen}>
       {progs ? (
         <View style={styles.resultsContainer}>
           <FlatList
+            ItemSeparatorComponent = { this.FlatListItemSeparator }
+            numColumns="1"
+            style={{ margin: 10 }}
+            keyExtractor={(item, index) => item.show.id.toString()} // this tell React Native where the key is
             data={progs}
-            renderItem={({ item }) => <Text>{item.name}</Text>}
+            renderItem={({ item }) => (
+              <View>
+                <Text style={styles.baseText}>{item.show.name}</Text>
+                {checkImagePresent(item)}
+              </View>
+            )}
           />
         </View>
       ) : (
@@ -44,11 +77,26 @@ export default function ProgsScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   ProgsScreen: {
-    /* styles here */
   },
 
   loadingContainer: {
     height: "100%",
     justifyContent: "center",
   },
+
+  resultImage: {
+    flex: 1,
+    margin: 30,
+    height: 300,
+    justifyContent: "center",
+  },
+
+  baseText: {
+    fontWeight: 'bold',
+    marginTop: 10,
+    marginLeft: 10,
+    fontSize: 20,
+  },
+
 });
+

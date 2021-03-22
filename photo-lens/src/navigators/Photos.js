@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import PhotoDetailsScreen from '../screens/PhotoDetails';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -11,6 +12,7 @@ export default function PhotosNavigator() {
     return (
         <Stack.Navigator style={styles.PhotosNavigator}>
             <Stack.Screen name="Photos" component={PhotosScreen} />
+            <Stack.Screen name="Photo Details" component={PhotoDetailsScreen} />
         </Stack.Navigator>
     );
 }

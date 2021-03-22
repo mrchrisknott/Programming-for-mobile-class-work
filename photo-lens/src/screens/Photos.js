@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   FlatList,
   Image,
+  TouchableOpacity,
 } from "react-native";
 import { global } from "../config/global";
 
@@ -17,18 +18,15 @@ export default function PhotosScreen({ navigation }) {
     console.log(
       "Make a call to the API using the search query: " + searchQuery
     );
-    fetch("https://api.unsplash.com/search/photos?client_id=" +
+    fetch(
+      "https://api.unsplash.com/search/photos?client_id=" +
         global.unsplashAccessKey +
         "&query=" +
         searchQuery
     )
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);              // displays
         setPhotos(json["results"]);
-        console.log("CJK-START");       // displays
-        console.log(json["results"]);   // displays
-        console.log("CJK-ENDSTART");    // displays
       })
       .catch((error) => {
         console.error(error);
@@ -48,10 +46,19 @@ export default function PhotosScreen({ navigation }) {
             style={{ margin: 10 }}
             data={photos}
             renderItem={({ item }) => (
-              <Image
-                style={styles.resultImage}
-                source={{ uri: item.urls.regular }}
-              />
+              <TouchableOpacity
+                style={styles.resultImageTouchable}
+                onPress={() => {
+                  navigation.navigate("Photo Details", {
+                    photoId: item.id,
+                  });
+                }}
+              >
+                <Image
+                  style={styles.resultImage}
+                  source={{ uri: item.urls.regular }}
+                />
+              </TouchableOpacity>
             )}
           />
         </View>
@@ -73,6 +80,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   resultImage: {
+    flex: 1,
+    //   margin: 10,
+    height: 200,
+  },
+  resultImageTouchable: {
     flex: 1,
     margin: 10,
     height: 200,

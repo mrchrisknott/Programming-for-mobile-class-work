@@ -13,6 +13,19 @@ import ActorsNavigator from "./src/navigators/Actors";
 export default function App() {
   const Drawer = createDrawerNavigator();
 
+
+  FlatListItemSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 4,
+          width: "100%",
+          backgroundColor: "#000",
+        }}
+      />
+    );
+  }
+
   return (
     <NavigationContainer style={styles.container}>
       <Drawer.Navigator>
