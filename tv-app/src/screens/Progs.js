@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";  
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,7 +6,8 @@ import {
   ActivityIndicator,
   FlatList,
   Image,
-} from "react-native";                               
+  TouchableOpacity,
+} from "react-native";
 
 export default function ProgsScreen({ navigation }) {
   const [searchQuery, setSearchQuery] = useState("candid");
@@ -33,17 +34,38 @@ export default function ProgsScreen({ navigation }) {
   const checkImagePresent = (item) => {
     if (item.show.image) {
       return (
-        <Image
-          source={{ uri: item.show.image.original }}
-          style={styles.resultImage}
-        />
+        <TouchableOpacity
+          style={styles.resultImageTouchable}
+          onPress={() => {
+            navigation.navigate("Program Details", {
+              photoId: item.show.id,
+            });
+          }}
+        >
+          <Image
+            source={{ uri: item.show.image.original }}
+            style={styles.resultImage}
+          />
+        </TouchableOpacity>
       );
     } else {
       return (
-        <Image
-          source={{ uri: "https://d3iso9mq9tb10q.cloudfront.net/wysiwyg/default-placeholder.png" }}
-          style={styles.resultImage}
-        />
+        <TouchableOpacity
+          style={styles.resultImageTouchable}
+          onPress={() => {
+            navigation.navigate("Program Details", {
+              photoId: item.show.id,
+            });
+          }}
+        >
+          <Image
+            source={{
+              uri:
+                "https://d3iso9mq9tb10q.cloudfront.net/wysiwyg/default-placeholder.png",
+            }}
+            style={styles.resultImage}
+          />
+        </TouchableOpacity>
       );
     }
   };
@@ -53,7 +75,7 @@ export default function ProgsScreen({ navigation }) {
       {progs ? (
         <View style={styles.resultsContainer}>
           <FlatList
-            ItemSeparatorComponent = { this.FlatListItemSeparator }
+            ItemSeparatorComponent={this.FlatListItemSeparator}
             numColumns="1"
             style={{ margin: 10 }}
             keyExtractor={(item, index) => item.show.id.toString()} // this tell React Native where the key is
@@ -76,8 +98,7 @@ export default function ProgsScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  ProgsScreen: {
-  },
+  ProgsScreen: {},
 
   loadingContainer: {
     height: "100%",
@@ -86,17 +107,16 @@ const styles = StyleSheet.create({
 
   resultImage: {
     flex: 1,
-    margin: 30,
-    height: 300,
+    margin: 20,
+    width: "50%",
+    height: 200,
     justifyContent: "center",
   },
 
   baseText: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 10,
     marginLeft: 10,
     fontSize: 20,
   },
-
 });
-
