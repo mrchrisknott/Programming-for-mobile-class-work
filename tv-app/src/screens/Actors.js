@@ -85,38 +85,6 @@ export default function ActorsScreen({ navigation }) {
                 <Text style={styles.baseText}>{item.person.name}</Text>
                 {checkImagePresent(item)}
               </View>
-
-              //          <Text>
-              //            {"Name:        "}
-              //            {item.person.name}
-              //            {"\n"}
-              //            {"Photo URL: "}
-              //            {item.person.url}
-              //            {"\n"}
-              //            {"Photo URL: "}
-              //            {item.person.image.original}
-              //            {"\n"} // works if all populated - need to work out how to
-              //            handle empty one
-              //            {"Country:        "}
-              //            {item.person.country.name}
-              //            {"\n"} // works if all populated - need to work out how to
-              //            handle empty one
-              //            {"Gender:        "}
-              //            {item.person.gender}
-              //            {"\n"}
-              //            {"Born:            "}
-              //            {item.person.birthday}
-              //            {"\n"}
-              //            {"Died:            "}
-              //            {item.person.deathday}
-              //            {"\n"}
-              //          </Text>
-
-              //      <Image
-              //        style={styles.resultImage}
-              //        source={{ uri: item.person.image.original }}
-              //
-              //      />
             )}
           />
         </View>
