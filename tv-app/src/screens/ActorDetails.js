@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import { global } from "../config/global"; //////
+import { global } from "../config/global"; 
 export default function ActorDetailsScreen({ route, navigation }) {
-  const [actorData, setActorData] = useState(); ///////
+  const [actorData, setActorData] = useState(); 
 
   const { photoId } = route.params;
   console.log("show details for photo: " + photoId);
