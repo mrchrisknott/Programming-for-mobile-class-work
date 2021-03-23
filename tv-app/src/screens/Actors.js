@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 export default function ActorsScreen({ navigation }) {
-  const [searchQuery, setSearchQuery] = useState("smith");
+  const [searchQuery, setSearchQuery] = useState("Peacock");
   const [actors, setActors] = useState();
   const searchActors = () => {
     console.log(

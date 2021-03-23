@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   Image,
+  ScrollView,
 } from "react-native";
 import { global } from "../config/global";
 export default function ProgDetailsScreen({ route, navigation }) {
@@ -66,15 +67,16 @@ export default function ProgDetailsScreen({ route, navigation }) {
         </Text>
       );
     } else {
-        return (
-            <Text style={styles.metaDataText}>
-              <Text style={{ fontWeight: "bold" }}>Summary: </Text> No data
-            </Text>  
-        )}
+      return (
+        <Text style={styles.metaDataText}>
+          <Text style={{ fontWeight: "bold" }}>Summary: </Text> No data
+        </Text>
+      );
+    }
   };
 
   return (
-    <View style={styles.ProgDetailsScreen}>
+    <ScrollView style={styles.ProgDetailsScreen}>
       {progData ? (
         <View style={styles.detailsContainer}>
           {checkImagePresent(progData)}
@@ -100,7 +102,7 @@ export default function ProgDetailsScreen({ route, navigation }) {
           <ActivityIndicator size="large" color="#000" />
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 }
 

@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import { global } from "../config/global"; 
+import { global } from "../config/global";
 export default function ActorDetailsScreen({ route, navigation }) {
-  const [actorData, setActorData] = useState(); 
+  const [actorData, setActorData] = useState();
 
   const { photoId } = route.params;
   console.log("show details for photo: " + photoId);
@@ -52,6 +52,21 @@ export default function ActorDetailsScreen({ route, navigation }) {
     }
   };
 
+  const deathData = (actorData) => {
+    if (actorData.deathday) {
+      console.log("aaaa");
+      console.log({ actorData });
+      console.log("bbbb");
+
+      return (
+        <Text style={styles.metaDataText}>
+          <Text style={{ fontWeight: "bold" }}>Date of death:</Text>{" "}
+          {actorData.deathday}
+        </Text>
+      );
+    }
+  };
+
   return (
     <View style={styles.ActorDetailsScreen}>
       {actorData ? (
@@ -68,13 +83,12 @@ export default function ActorDetailsScreen({ route, navigation }) {
               {actorData.gender}
             </Text>
             <Text style={styles.metaDataText}>
-              <Text style={{ fontWeight: "bold" }}>Birthday:</Text>{" "}
+              <Text style={{ fontWeight: "bold" }}>Date of birth:</Text>{" "}
               {actorData.birthday}
             </Text>
-            <Text style={styles.metaDataText}>
-              <Text style={{ fontWeight: "bold" }}>Deathday:</Text>{" "}
-              {actorData.deathday}
-            </Text>
+
+            {deathData(actorData)}
+            
           </View>
         </View>
       ) : (
