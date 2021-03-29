@@ -31,7 +31,6 @@ export default function ActorDetailsScreen({ route, navigation }) {
 
   const checkImagePresent = (actorData) => {
     if (actorData.image) {
-      console.log("XXXX");
       return (
         <Image
           style={styles.photoImage}
@@ -39,7 +38,6 @@ export default function ActorDetailsScreen({ route, navigation }) {
         />
       );
     } else {
-      console.log("ZZZZ");
       return (
         <Image
           style={styles.photoImage}
@@ -54,10 +52,6 @@ export default function ActorDetailsScreen({ route, navigation }) {
 
   const deathData = (actorData) => {
     if (actorData.deathday) {
-      console.log("aaaa");
-      console.log({ actorData });
-      console.log("bbbb");
-
       return (
         <Text style={styles.metaDataText}>
           <Text style={{ fontWeight: "bold" }}>Date of death:</Text>{" "}
@@ -71,6 +65,7 @@ export default function ActorDetailsScreen({ route, navigation }) {
     <View style={styles.ActorDetailsScreen}>
       {actorData ? (
         <View style={styles.detailsContainer}>
+
           {checkImagePresent(actorData)}
 
           <View style={styles.metaDataContainer}>
@@ -88,7 +83,7 @@ export default function ActorDetailsScreen({ route, navigation }) {
             </Text>
 
             {deathData(actorData)}
-            
+
           </View>
         </View>
       ) : (

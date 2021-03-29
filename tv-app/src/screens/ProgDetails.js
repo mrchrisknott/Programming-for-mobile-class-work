@@ -32,7 +32,6 @@ export default function ProgDetailsScreen({ route, navigation }) {
 
   const checkImagePresent = (progData) => {
     if (progData.image) {
-      console.log("XXXX");
       return (
         <Image
           style={styles.photoImage}
@@ -40,7 +39,6 @@ export default function ProgDetailsScreen({ route, navigation }) {
         />
       );
     } else {
-      console.log("ZZZZ");
       return (
         <Image
           style={styles.photoImage}
@@ -55,12 +53,7 @@ export default function ProgDetailsScreen({ route, navigation }) {
 
   const cleanUpText = (progData) => {
     if (progData.summary) {
-      console.log("aaaa");
-      console.log({ progData });
-      console.log("bbbb");
-
       const newSum = progData.summary.replace(/(<([^>]+)>)/gi, "");
-      console.log(newSum);
       return (
         <Text style={styles.metaDataText}>
           <Text style={{ fontWeight: "bold" }}>Summary:</Text> {newSum}
