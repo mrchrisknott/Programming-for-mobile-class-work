@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import SearchProgsForm from '../components/SearchProgsForm';
 import {
   StyleSheet,
   Text,
@@ -72,12 +73,13 @@ export default function ProgsScreen({ navigation }) {
 
   return (
     <View style={styles.ProgsScreen}>
+      <SearchProgsForm setSearchQuery={setSearchQuery} />
       {progs ? (
         <View style={styles.resultsContainer}>
           <FlatList
             ItemSeparatorComponent={this.FlatListItemSeparator}
             numColumns="1"
-            style={{ margin: 10 }}
+            style={{ margin: 10, marginBottom: 100 }}
             keyExtractor={(item, index) => item.show.id.toString()} // this tell React Native where the key is
             data={progs}
             renderItem={({ item }) => (

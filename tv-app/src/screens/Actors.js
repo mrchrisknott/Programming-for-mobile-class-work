@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import SearchActorsForm from '../components/SearchActorsForm';
 import {
   StyleSheet,
   Text,
@@ -71,13 +72,15 @@ export default function ActorsScreen({ navigation }) {
   };
 
   return (
+
     <View style={styles.ActorsScreen}>
+      <SearchActorsForm setSearchQuery={setSearchQuery} />
       {actors ? (
         <View style={styles.resultsContainer}>
           <FlatList
             ItemSeparatorComponent={this.FlatListItemSeparator}
             numColumns="1"
-            style={{ margin: 10 }}
+            style={{ margin: 10, marginBottom: 100 }}
             keyExtractor={(item, index) => item.person.id.toString()} // this tell React Native where the key is
             data={actors}
             renderItem={({ item }) => (
