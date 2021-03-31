@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { global } from "../config/global";
+import SearchForm from "../components/SearchForm";
 
 export default function PhotosScreen({ navigation }) {
   const [searchQuery, setSearchQuery] = useState("Beach");
@@ -39,11 +40,12 @@ export default function PhotosScreen({ navigation }) {
 
   return (
     <View style={styles.PhotosScreen}>
+      <SearchForm setSearchQuery={setSearchQuery} />
       {photos ? (
         <View style={styles.resultsContainer}>
           <FlatList
             numColumns="2"
-            style={{ margin: 10 }}
+            style={{ margin: 10, marginBottom: 100  }}
             data={photos}
             renderItem={({ item }) => (
               <TouchableOpacity
