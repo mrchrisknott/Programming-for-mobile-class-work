@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   StyleSheet,
-  Text,
   View,
   TextInput,
   TouchableOpacity,
@@ -25,11 +24,14 @@ export default function SearchForm({ setSearchQuery }) {
     <View style={styles.searchForm}>
       <TextInput
         style={styles.input}
-        placeholder="Search photos..."
+        placeholder="Search programs by name..."
         onChangeText={changeHandler}
       />
-      <TouchableOpacity style={styles.searchButton} onPress={() => submitHandler()}>
-        <Feather style={styles.icon} name="search" size={24} color="#FFF" />
+      <TouchableOpacity
+        style={styles.searchButton}
+        onPress={() => submitHandler()}
+      >
+        <Feather style={styles.icon} name="search" size={36} color="#FFF" />
       </TouchableOpacity>
     </View>
   );
@@ -38,7 +40,7 @@ export default function SearchForm({ setSearchQuery }) {
 const styles = StyleSheet.create({
   searchForm: {
     width: "100%",
-    height: 40,
+    height: 50,
     flexDirection: "row",
     backgroundColor: "#FFF",
   },
@@ -48,17 +50,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     borderBottomWidth: 1,
     borderBottomColor: "#000",
+    fontSize: 20,
   },
   searchButton: {
-    width: 40,
-    height: 40,
-    padding: 2,
+    width: 50,
+    height: 50,
+    padding: 7,
     backgroundColor: "#000",
   },
   icon: {
     flex: 1,
     justifyContent: "center",
     alignSelf: "center",
-    lineHeight: 32,
+    lineHeight: 36,
   },
 });

@@ -80,7 +80,7 @@ export default function ProgsScreen({ navigation }) {
             ItemSeparatorComponent={this.FlatListItemSeparator}
             numColumns="1"
             style={{ margin: 10, marginBottom: 100 }}
-            keyExtractor={(item, index) => item.show.id.toString()} // this tell React Native where the key is
+            keyExtractor={(item, index) => item.show.id.toString()} 
             data={progs}
             renderItem={({ item }) => (
               <View>
@@ -100,7 +100,9 @@ export default function ProgsScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  ProgsScreen: {},
+  ProgsScreen: {
+    backgroundColor: "pink",
+  },
 
   loadingContainer: {
     height: "100%",
@@ -113,6 +115,7 @@ const styles = StyleSheet.create({
     width: "50%",
     height: 200,
     justifyContent: "center",
+
   },
 
   baseText: {

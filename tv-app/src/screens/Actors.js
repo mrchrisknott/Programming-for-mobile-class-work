@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SearchActorsForm from '../components/SearchActorsForm';
+import SearchActorsForm from "../components/SearchActorsForm";
 import {
   StyleSheet,
   Text,
@@ -32,6 +32,12 @@ export default function ActorsScreen({ navigation }) {
     searchActors();
   }, [searchQuery]);
 
+  //var abc = Array.length;
+  //console.log('a-before');
+  //console.log(abc);
+  //console.log('a-after');
+
+  // ////////////////////////////////////////////////////////////////////////////////////
   const checkImagePresent = (item) => {
     if (item.person.image) {
       return (
@@ -71,8 +77,9 @@ export default function ActorsScreen({ navigation }) {
     }
   };
 
-  return (
+  // above the FlatList you need to check if there is any data - then at line 101 you need a ):( thing  and a message saying NO DATA - see Sean
 
+  return (
     <View style={styles.ActorsScreen}>
       <SearchActorsForm setSearchQuery={setSearchQuery} />
       {actors ? (
@@ -81,7 +88,7 @@ export default function ActorsScreen({ navigation }) {
             ItemSeparatorComponent={this.FlatListItemSeparator}
             numColumns="1"
             style={{ margin: 10, marginBottom: 100 }}
-            keyExtractor={(item, index) => item.person.id.toString()} // this tell React Native where the key is
+            keyExtractor={(item, index) => item.person.id.toString()}
             data={actors}
             renderItem={({ item }) => (
               <View>
@@ -101,7 +108,9 @@ export default function ActorsScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  ActorsScreen: {},
+  ActorsScreen: {
+    backgroundColor: "thistle",
+  },
 
   loadingContainer: {
     height: "100%",

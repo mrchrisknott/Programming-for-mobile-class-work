@@ -11,13 +11,20 @@ export default function HomeNavigator() {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={({ navigation }) => ({ 
-            title: 'T V M A Z E', 
-            headerLeft: (props) => {
-                return <Feather style={styles.headerMenuButton} name="menu" size={24} color="black" onPress={() => navigation.toggleDrawer() } />
-            }
+        options={({ navigation }) => ({
+          title: "T V M A Z E",
+          headerLeft: (props) => {
+            return (
+              <Feather
+                style={styles.headerMenuButton}
+                name="menu"
+                size={24}
+                color="black"
+                onPress={() => navigation.toggleDrawer()}
+              />
+            );
+          },
         })}
-        
       />
     </Stack.Navigator>
   );
@@ -28,7 +35,6 @@ const styles = StyleSheet.create({
     /* Styles here */
   },
   headerMenuButton: {
-    marginLeft: 20
-}
-
+    marginLeft: 20,
+  },
 });

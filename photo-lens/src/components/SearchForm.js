@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
-export default function SearchForm({ setSearchQuery }) {
+export default function SearchForm({ setSearchQuery, type }) {
   const [text, setText] = useState();
 
   const submitHandler = () => {
@@ -26,7 +26,7 @@ export default function SearchForm({ setSearchQuery }) {
     <View style={styles.searchForm}>
       <TextInput
         style={styles.input}
-        placeholder="Search photos..."
+        placeholder={"Search "+type+"..."}
         onChangeText={changeHandler}
       />
       <TouchableOpacity style={styles.searchButton} onPress={() => submitHandler()}>

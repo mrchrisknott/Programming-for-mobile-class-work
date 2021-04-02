@@ -40,7 +40,7 @@ export default function PhotosScreen({ navigation }) {
 
   return (
     <View style={styles.PhotosScreen}>
-      <SearchForm setSearchQuery={setSearchQuery} />
+      <SearchForm setSearchQuery={setSearchQuery} type="photos" />
       {photos ? (
         <View style={styles.resultsContainer}>
           <FlatList
