@@ -23,6 +23,7 @@ export default function CollectionsScreen({ navigation }) {
     )
       .then((response) => response.json())
       .then((json) => {
+        console.log(json);
         setCollections(json["results"]);
       })
       .catch((error) => {

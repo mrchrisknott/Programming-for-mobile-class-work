@@ -11,7 +11,7 @@ import {
 } from "react-native";
 
 export default function ProgsScreen({ navigation }) {
-  const [searchQuery, setSearchQuery] = useState("candid");
+  const [searchQuery, setSearchQuery] = useState("girls");
   const [progs, setProgs] = useState();
   const searchProgs = () => {
     console.log(
@@ -110,11 +110,23 @@ const styles = StyleSheet.create({
   },
 
   resultImage: {
+ //   flex: 1,
+ //   margin: 20,
+ //   width: "50%",
+ //   height: 200,
+ //   justifyContent: "center",
+
     flex: 1,
-    margin: 20,
-    width: "50%",
+    width: 250,
     height: 200,
+    resizeMode: "cover",
+    borderColor: "deeppink",
+    borderWidth: 5,
+    margin: 10,
+    flexDirection: "row",
     justifyContent: "center",
+
+
 
   },
 

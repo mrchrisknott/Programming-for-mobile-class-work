@@ -11,7 +11,7 @@ import {
 } from "react-native";
 
 export default function ActorsScreen({ navigation }) {
-  const [searchQuery, setSearchQuery] = useState("Peacock");
+  const [searchQuery, setSearchQuery] = useState("Bloggs");
   const [actors, setActors] = useState();
   const searchActors = () => {
     console.log(
@@ -32,12 +32,6 @@ export default function ActorsScreen({ navigation }) {
     searchActors();
   }, [searchQuery]);
 
-  //var abc = Array.length;
-  //console.log('a-before');
-  //console.log(abc);
-  //console.log('a-after');
-
-  // ////////////////////////////////////////////////////////////////////////////////////
   const checkImagePresent = (item) => {
     if (item.person.image) {
       return (
@@ -76,8 +70,6 @@ export default function ActorsScreen({ navigation }) {
       );
     }
   };
-
-  // above the FlatList you need to check if there is any data - then at line 101 you need a ):( thing  and a message saying NO DATA - see Sean
 
   return (
     <View style={styles.ActorsScreen}>
@@ -119,9 +111,13 @@ const styles = StyleSheet.create({
 
   resultImage: {
     flex: 1,
-    margin: 20,
-    width: "50%",
+    width: 250,
     height: 200,
+    resizeMode: "cover",
+    borderColor: "darkslateblue",
+    borderWidth: 5,
+    margin: 10,
+    flexDirection: "row",
     justifyContent: "center",
   },
 
@@ -131,4 +127,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 20,
   },
+  resultImageTouchable: {},
 });
+s

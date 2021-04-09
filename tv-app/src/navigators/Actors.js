@@ -9,7 +9,7 @@ export default function ActorsNavigator() {
 
   return (
     <Stack.Navigator style={styles.ActorsNavigator}>
-      <Stack.Screen name="Actors" component={ActorsScreen} />
+      <Stack.Screen name="Actor Search" component={ActorsScreen} />
 
       <Stack.Screen name="Actor Details" component={ActorDetailsScreen} />
     </Stack.Navigator>

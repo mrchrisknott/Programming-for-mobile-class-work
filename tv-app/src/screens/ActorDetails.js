@@ -4,15 +4,12 @@ import {
   Text,
   View,
   ActivityIndicator,
-  TouchableOpacity,
   Image,
 } from "react-native";
-import { global } from "../config/global";
 export default function ActorDetailsScreen({ route, navigation }) {
   const [actorData, setActorData] = useState();
 
   const { photoId } = route.params;
-  console.log("show details for photo: " + photoId);
   const getActorData = () => {
     fetch("http://api.tvmaze.com/people/" + photoId)
       .then((response) => response.json())
@@ -97,7 +94,10 @@ export default function ActorDetailsScreen({ route, navigation }) {
 
 const styles = StyleSheet.create({
   ActorDetailsScreen: {
-    /* styles here */
+    backgroundColor: "thistle",
+    marginBottom: 100,
+    paddingBottom: 100,
+
   },
 
   loadingContainer: {
@@ -105,23 +105,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  resultImage: {
-    flex: 1,
-    margin: 20,
-    width: 250,
-    height: 350,
-    justifyContent: "center",
-  },
 
   photoImage: {
     width: 360,
     height: 300,
-    resizeMode: "cover",
+    resizeMode: "contain",
+    borderColor: "darkslateblue",
+    borderWidth: 10,
   },
   metaDataContainer: {
     margin: 20,
   },
   metaDataText: {
+    margin: 15,
     fontSize: 17,
   },
 });

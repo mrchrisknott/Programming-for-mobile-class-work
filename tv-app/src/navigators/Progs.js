@@ -9,7 +9,7 @@ export default function ProgsNavigator() {
 
   return (
     <Stack.Navigator style={styles.ProgsNavigator}>
-      <Stack.Screen name="Programs" component={ProgsScreen} />
+      <Stack.Screen name="Program Search" component={ProgsScreen} />
       <Stack.Screen name="Program Details" component={ProgDetailsScreen} />
     </Stack.Navigator>
   );

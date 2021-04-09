@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/Home";
 import { Feather } from "@expo/vector-icons";
@@ -12,7 +12,7 @@ export default function HomeNavigator() {
         name="Home"
         component={HomeScreen}
         options={({ navigation }) => ({
-          title: "T V M A Z E",
+          title: "Home",
           headerLeft: (props) => {
             return (
               <Feather

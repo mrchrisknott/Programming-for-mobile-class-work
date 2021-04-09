@@ -24,7 +24,7 @@ export default function SearchForm({ setSearchQuery }) {
     <View style={styles.searchForm}>
       <TextInput
         style={styles.input}
-        placeholder="Search programs by name..."
+        placeholder="Enter actor's name here..."
         onChangeText={changeHandler}
       />
       <TouchableOpacity

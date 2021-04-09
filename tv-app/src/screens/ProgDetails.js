@@ -4,16 +4,13 @@ import {
   Text,
   View,
   ActivityIndicator,
-  TouchableOpacity,
   Image,
   ScrollView,
 } from "react-native";
-import { global } from "../config/global";
 export default function ProgDetailsScreen({ route, navigation }) {
   const [progData, setProgData] = useState();
 
   const { photoId } = route.params;
-  console.log("show details for photo: " + photoId);
   const getProgData = () => {
     fetch("http://api.tvmaze.com/shows/" + photoId)
       .then((response) => response.json())
@@ -76,7 +73,7 @@ export default function ProgDetailsScreen({ route, navigation }) {
 
           <View style={styles.metaDataContainer}>
             <Text style={styles.metaDataText}>
-              <Text style={{ fontWeight: "bold" }}>Programs name:</Text>{" "}
+              <Text style={{ fontWeight: "bold" }}>Name of program:</Text>{" "}
               {progData.name}
             </Text>
             <Text style={styles.metaDataText}>
@@ -101,7 +98,7 @@ export default function ProgDetailsScreen({ route, navigation }) {
 
 const styles = StyleSheet.create({
   ProgDetailsScreen: {
-    /* styles here */
+    backgroundColor: "pink",
   },
 
   loadingContainer: {
@@ -112,6 +109,7 @@ const styles = StyleSheet.create({
   resultImage: {
     flex: 1,
     margin: 20,
+    
     width: 250,
     height: 350,
     justifyContent: "center",
@@ -120,12 +118,15 @@ const styles = StyleSheet.create({
   photoImage: {
     width: 360,
     height: 300,
-    resizeMode: "cover",
+    resizeMode: "contain",
+    borderColor: "deeppink",
+    borderWidth: 10,
   },
   metaDataContainer: {
     margin: 20,
   },
   metaDataText: {
     fontSize: 17,
+    margin: 7,
   },
 });
