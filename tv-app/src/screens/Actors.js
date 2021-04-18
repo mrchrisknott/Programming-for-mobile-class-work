@@ -28,6 +28,15 @@ export default function ActorsScreen({ navigation }) {
       });
   };
 
+  const EmptyListMessage = ({ item }) => {
+    return (
+      // Flat List Item
+      <Text style={styles.emptyListStyle} onPress={() => getItem(item)}>
+        Sorry, no actors were found with that name!
+      </Text>
+    );
+  };
+
   useEffect(() => {
     searchActors();
   }, [searchQuery]);
@@ -77,7 +86,6 @@ export default function ActorsScreen({ navigation }) {
       {actors ? (
         <View style={styles.resultsContainer}>
           <FlatList
-            ItemSeparatorComponent={this.FlatListItemSeparator}
             numColumns="1"
             style={{ margin: 10, marginBottom: 100 }}
             keyExtractor={(item, index) => item.person.id.toString()}
@@ -88,6 +96,7 @@ export default function ActorsScreen({ navigation }) {
                 {checkImagePresent(item)}
               </View>
             )}
+            ListEmptyComponent={EmptyListMessage}
           />
         </View>
       ) : (
@@ -102,6 +111,7 @@ export default function ActorsScreen({ navigation }) {
 const styles = StyleSheet.create({
   ActorsScreen: {
     backgroundColor: "thistle",
+    flex: 1,
   },
 
   loadingContainer: {
@@ -115,7 +125,7 @@ const styles = StyleSheet.create({
     height: 200,
     resizeMode: "cover",
     borderColor: "darkslateblue",
-    borderWidth: 5,
+    borderWidth: 3,
     margin: 10,
     flexDirection: "row",
     justifyContent: "center",
@@ -127,6 +137,12 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 20,
   },
-  resultImageTouchable: {},
+
+  emptyListStyle: {
+    fontWeight: "bold",
+    marginTop: 100,
+    marginBottom: 300,
+    marginLeft: 10,
+    fontSize: 20,
+  },
 });
-s

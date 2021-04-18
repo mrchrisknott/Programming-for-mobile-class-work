@@ -12,7 +12,7 @@ export default function App() {
   const Drawer = createDrawerNavigator();
 
 
-  FlatListItemSeparator = () => {
+  const FlatListItemSeparator = () => {
     return (
       <View
         style={{
@@ -35,7 +35,7 @@ export default function App() {
         <Drawer.Screen
           name="Progs"
           component={ProgsNavigator}
-          options={{ title: "Program Search" }}
+          options={{ title: "Programme Search" }}
         />
         <Drawer.Screen
           name="Actors"

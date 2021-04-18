@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ActivityIndicator,
-  Image,
-} from "react-native";
+import { StyleSheet, Text, View, ActivityIndicator, Image, ScrollView } from "react-native";
 export default function ActorDetailsScreen({ route, navigation }) {
   const [actorData, setActorData] = useState();
 
@@ -59,10 +53,9 @@ export default function ActorDetailsScreen({ route, navigation }) {
   };
 
   return (
-    <View style={styles.ActorDetailsScreen}>
+    <ScrollView style={styles.ActorDetailsScreen}>
       {actorData ? (
         <View style={styles.detailsContainer}>
-
           {checkImagePresent(actorData)}
 
           <View style={styles.metaDataContainer}>
@@ -80,7 +73,6 @@ export default function ActorDetailsScreen({ route, navigation }) {
             </Text>
 
             {deathData(actorData)}
-
           </View>
         </View>
       ) : (
@@ -88,16 +80,14 @@ export default function ActorDetailsScreen({ route, navigation }) {
           <ActivityIndicator size="large" color="#000" />
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   ActorDetailsScreen: {
     backgroundColor: "thistle",
-    marginBottom: 100,
-    paddingBottom: 100,
-
+    flex: 1,
   },
 
   loadingContainer: {
@@ -105,17 +95,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-
   photoImage: {
-    width: 360,
-    height: 300,
+    width: "100%",
+    height: 400,
     resizeMode: "contain",
     borderColor: "darkslateblue",
-    borderWidth: 10,
+    borderWidth: 3,
   },
+
   metaDataContainer: {
     margin: 20,
   },
+
   metaDataText: {
     margin: 15,
     fontSize: 17,

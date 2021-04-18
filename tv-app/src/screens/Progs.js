@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SearchProgsForm from '../components/SearchProgsForm';
+import SearchProgsForm from "../components/SearchProgsForm";
 import {
   StyleSheet,
   Text,
@@ -28,6 +28,15 @@ export default function ProgsScreen({ navigation }) {
       });
   };
 
+  const EmptyListMessage = ({ item }) => {
+    return (
+      // Flat List Item
+      <Text style={styles.emptyListStyle} onPress={() => getItem(item)}>
+        Sorry, no programmes were found with that name!
+      </Text>
+    );
+  };
+
   useEffect(() => {
     searchProgs();
   }, [searchQuery]);
@@ -38,7 +47,7 @@ export default function ProgsScreen({ navigation }) {
         <TouchableOpacity
           style={styles.resultImageTouchable}
           onPress={() => {
-            navigation.navigate("Program Details", {
+            navigation.navigate("Programme Details", {
               photoId: item.show.id,
             });
           }}
@@ -54,7 +63,7 @@ export default function ProgsScreen({ navigation }) {
         <TouchableOpacity
           style={styles.resultImageTouchable}
           onPress={() => {
-            navigation.navigate("Program Details", {
+            navigation.navigate("Programme Details", {
               photoId: item.show.id,
             });
           }}
@@ -77,10 +86,9 @@ export default function ProgsScreen({ navigation }) {
       {progs ? (
         <View style={styles.resultsContainer}>
           <FlatList
-            ItemSeparatorComponent={this.FlatListItemSeparator}
             numColumns="1"
             style={{ margin: 10, marginBottom: 100 }}
-            keyExtractor={(item, index) => item.show.id.toString()} 
+            keyExtractor={(item, index) => item.show.id.toString()}
             data={progs}
             renderItem={({ item }) => (
               <View>
@@ -88,6 +96,7 @@ export default function ProgsScreen({ navigation }) {
                 {checkImagePresent(item)}
               </View>
             )}
+            ListEmptyComponent={EmptyListMessage}
           />
         </View>
       ) : (
@@ -102,6 +111,7 @@ export default function ProgsScreen({ navigation }) {
 const styles = StyleSheet.create({
   ProgsScreen: {
     backgroundColor: "pink",
+    flex: 1,
   },
 
   loadingContainer: {
@@ -110,24 +120,23 @@ const styles = StyleSheet.create({
   },
 
   resultImage: {
- //   flex: 1,
- //   margin: 20,
- //   width: "50%",
- //   height: 200,
- //   justifyContent: "center",
-
     flex: 1,
     width: 250,
     height: 200,
     resizeMode: "cover",
     borderColor: "deeppink",
-    borderWidth: 5,
+    borderWidth: 3,
     margin: 10,
     flexDirection: "row",
     justifyContent: "center",
+  },
 
-
-
+  emptyListStyle: {
+    fontWeight: "bold",
+    marginTop: 100,
+    marginBottom: 300,
+    marginLeft: 10,
+    fontSize: 20,
   },
 
   baseText: {

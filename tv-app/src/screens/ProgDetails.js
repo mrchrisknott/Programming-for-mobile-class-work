@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   Image,
   ScrollView,
+  Linking,
 } from "react-native";
 export default function ProgDetailsScreen({ route, navigation }) {
   const [progData, setProgData] = useState();
@@ -48,6 +49,32 @@ export default function ProgDetailsScreen({ route, navigation }) {
     }
   };
 
+  const checkImdbPresent = (progData) => {
+    if (progData.externals.imdb) {
+      return (
+        <Text style={styles.metaDataText}>
+          <Text style={{ fontWeight: "bold" }}>Go to IMDb:</Text>{" "}
+          <Text
+            style={styles.underline}
+            onPress={() => {
+              const x = "https://www.imdb.com/title/" + progData.externals.imdb;
+              Linking.openURL(x);
+            }}
+          >
+            click here
+          </Text>
+        </Text>
+      );
+    } else {
+      return (
+        <Text style={styles.metaDataText}>
+          <Text style={{ fontWeight: "bold" }}>Go to IMDb:</Text>{" "}
+          {"Not available"}
+        </Text>
+      );
+    }
+  };
+
   const cleanUpText = (progData) => {
     if (progData.summary) {
       const newSum = progData.summary.replace(/(<([^>]+)>)/gi, "");
@@ -73,17 +100,22 @@ export default function ProgDetailsScreen({ route, navigation }) {
 
           <View style={styles.metaDataContainer}>
             <Text style={styles.metaDataText}>
-              <Text style={{ fontWeight: "bold" }}>Name of program:</Text>{" "}
+              <Text style={{ fontWeight: "bold" }}>Name of programme:</Text>{" "}
               {progData.name}
             </Text>
+
             <Text style={styles.metaDataText}>
               <Text style={{ fontWeight: "bold" }}>Language:</Text>{" "}
               {progData.language}
             </Text>
+
             <Text style={styles.metaDataText}>
               <Text style={{ fontWeight: "bold" }}>Premiered:</Text>{" "}
               {progData.premiered}
             </Text>
+
+            {checkImdbPresent(progData)}
+
             {cleanUpText(progData)}
           </View>
         </View>
@@ -106,27 +138,25 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  resultImage: {
-    flex: 1,
-    margin: 20,
-    
-    width: 250,
-    height: 350,
-    justifyContent: "center",
+  photoImage: {
+    width: "100%",
+    height: 400,
+    resizeMode: "cover",
+    borderColor: "deeppink",
+    borderWidth: 3,
   },
 
-  photoImage: {
-    width: 360,
-    height: 300,
-    resizeMode: "contain",
-    borderColor: "deeppink",
-    borderWidth: 10,
-  },
   metaDataContainer: {
     margin: 20,
   },
+
   metaDataText: {
     fontSize: 17,
     margin: 7,
   },
+
+  underline: {
+    textDecorationLine: 'underline',
+  },
+
 });

@@ -15,19 +15,19 @@ export default function HomeScreen({ navigation }) {
 
       <View>
         <Text style={styles.paragraph1}>
-          Use this app to search for your favourite TV programs and TV actors.
+          Use this app to search for your favourite TV programmes and TV actors.
         </Text>
         <Text style={styles.paragraph2}>
-          Try clicking on the images to get more information about the program
+          Try clicking on the images to get more information about the programme
           or actor.
         </Text>
       </View>
       <View>
         <Text style={styles.title}></Text>
         <Button
-          title="Program Search"
+          title="Programme Search"
           onPress={() => navigation.navigate("Progs")}
-          color="deeppink"
+          color="mediumvioletred"
         />
       </View>
       <View>
@@ -49,23 +49,28 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "lightgoldenrodyellow",
   },
+
   container: {
     alignItems: "center",
     justifyContent: "center",
   },
+
   paragraph1: {
     marginBottom: 10,
     alignItems: "center",
     justifyContent: "center",
-    fontSize: 17,
+    fontSize: 20,
+    fontWeight: "100",
   },
+
   paragraph2: {
-    marginBottom: 20,
+    marginBottom: 15,
     alignItems: "center",
     justifyContent: "center",
-    fontSize: 17,
+    fontSize: 20,
   },
+
   title: {
-    padding: 12,
+    padding: 5,
   },
 });

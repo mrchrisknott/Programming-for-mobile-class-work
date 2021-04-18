@@ -26,7 +26,7 @@ export default function SearchForm({setSearchQuery}) {
     <View style={styles.searchForm}>
       <TextInput
         style={styles.input}
-        placeholder="Enter program's name here..."
+        placeholder="Enter programme name here..."
         onChangeText={changeHandler}
       />
       <TouchableOpacity style={styles.searchButton} onPress={() => submitHandler()}>
